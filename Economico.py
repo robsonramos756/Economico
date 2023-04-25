@@ -2,7 +2,6 @@ import speech_recognition as sr
 import nltk
 import json
 
-# Carrega o arquivo JSON com os comandos e suas respostas
 with open('link.json', 'r', encoding='utf-8') as f:
     commands = json.load(f)
 
@@ -19,10 +18,10 @@ def find_command(question, commands):
             return data
     return None
 
-# Inicializa o reconhecedor de fala
+
 r = sr.Recognizer()
 
-# Inicializa o microfone
+
 mic = sr.Microphone()
 
 # Define a taxa de amostragem para o reconhecedor de fala
@@ -31,19 +30,19 @@ mic = sr.Microphone(device_index=1)
 with mic as source:
     r.adjust_for_ambient_noise(source)
     
-# Loop principal do sistema
+
 while True:
-    # Aguarda o usuário falar
+   
     with mic as source:
         print("Faça uma pergunta para o econômico: ")
         audio = r.listen(source)
 
     try:
-        # Transcreve a fala em texto
+       
         question = r.recognize_google(audio, language='pt-BR')
         print(f"Você disse: {question}")
 
-        # Encontra o comando correspondente à pergunta
+        
         response = find_command(question, commands)
         if response:
             print(response)

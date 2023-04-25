@@ -54,7 +54,7 @@ class CommandRecognitionTest(unittest.TestCase):
     @staticmethod
     def tokenize_question(question):
         
-        #Tokeniza as perguntas 
+        #Tokeniza as perguntas
         
         return question.lower().split()
 
